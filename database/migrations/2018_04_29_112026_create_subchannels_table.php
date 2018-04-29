@@ -14,11 +14,13 @@ class CreateSubchannelsTable extends Migration
     public function up()
     {
         Schema::create('subchannels', function (Blueprint $table) {
-            $table->increments('id'); $table->integer('channel_id')->unsigned();
-            $table->string('name',20); //頻道名稱
-            $table->string('description', 300); //頻道描述
-            $table->string('color',20); //分類標籤(顏色)
-            $table->string('photo')->nullable(); //頻道圖片
+            $table->increments('id');
+            $table->integer('user_id'); //創建子頻道的會員id
+            $table->integer('channel_id'); //總頻道id
+            $table->string('name',20); //子頻道名稱
+            $table->string('description', 300); //子頻道描述
+            $table->string('color',20); //標籤顏色
+            $table->string('photo')->nullable(); //子頻道圖片
             $table->timestamps();
         });
     }

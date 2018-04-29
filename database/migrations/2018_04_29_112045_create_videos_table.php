@@ -15,8 +15,8 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('subchannel_id'); //子頻道id
             $table->integer('user_id'); //發佈者的會員id
+            $table->integer('subchannel_id'); //子頻道id
             $table->string('title',30); //影片標題
             $table->string('author',20); //影片原著作者
             $table->string('video_id', 40); //youtube影片ID

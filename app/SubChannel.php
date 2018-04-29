@@ -12,6 +12,7 @@ class SubChannel extends Model
     protected $primaryKey = 'id';
     // 可以大量指定異動的欄位（Mass Assignment）
     protected  $fillable = [
+        'user_id',
         'channel_id',
         'name',
         'description',

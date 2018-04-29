@@ -12,8 +12,8 @@ class Video extends Model
     protected $primaryKey = 'id';
     // 可以大量指定異動的欄位（Mass Assignment）
     protected  $fillable = [
-        'subchannel_id',
         'user_id',
+        'subchannel_id',
         'title',
         'author',
         'video_id',
