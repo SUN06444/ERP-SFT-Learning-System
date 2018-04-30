@@ -1,0 +1,146 @@
+.alert {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+#container {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+#container:after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  display: block;
+  
+}
+#container.__signingin #form-slider, #container.__registration #form-info {
+  left: 50%;
+}
+#container.__registration #form-slider, #container.__signingin #form-info {
+  left: 0;
+}
+
+#form {
+  overflow: hidden;
+  padding: 0;
+  border-radius: 6px;
+  background: url("https://wallpaperscraft.com/image/candlestick_candle_gifts_dark_118754_1920x1080.jpg") center center no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.5);
+
+}
+.form-group{
+  color: black;
+  margin-bottom: 30px;
+}
+#form #form-slider {
+  background: #FFF;
+  position: relative;
+  padding: 20px;
+  width: 50%;
+  transition: left 1.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  left: 0;
+  box-shadow: 0 0 40px 2px rgba(0, 0, 0, 0.3);
+}
+#form #form-info {
+  font-family: 微軟正黑體;
+  position: absolute;
+  color: #FFF;
+  top: 20%;
+  left: 0;
+  width: 50%;
+}
+#form #form-info > div {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 30px;
+}
+#form #form-info .btn-link {
+  font-family: sans-serif;
+  color: #fff;
+  border: 2px solid;
+  border-radius: 3px;
+}
+
+.btn-separator {
+  text-align: center;
+  margin: 2px 0;
+  color: #777;
+}
+
+
+
+.or
+{
+  display: block;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #dee3e4;
+  position: relative;
+  margin: 20px 0;
+}
+
+.or:before
+{
+  content: 'or';
+  width: 40px;
+  height: 18px;
+  position: absolute;
+  top: -5px;
+  right: calc(50% - 20px);
+  background-color: #fff;
+  text-align: center;
+  line-height: 10px;
+  color: #555
+}
+
+
+.login-with-fb,
+.login-with-google
+{
+  width: 100%;
+  height: 40px;
+  display: block;
+  margin: 15px 0;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  opacity: .95;
+  border-radius:         3px;
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+}
+
+.login-with-fb:hover,
+.login-with-google:hover
+{
+  opacity: 1;
+  color: white;
+}
+
+.login-with-fb
+{
+  background: #527EBF
+}
+
+.login-with-google
+{
+  background: #DB4A37;
+}
+
+.login-with-fb .icon,
+.login-with-google .icon
+{
+  float: left;
+  font-size: 21px;
+  width: 50px;
+  height: 26px;
+  margin: 7px;
+  padding: 2px;
+  text-align: center;
+  border-right: 1px solid #fff;
+}
