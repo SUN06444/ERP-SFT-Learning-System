@@ -27,12 +27,12 @@
                 <ul class="dropdown-menu">
 
                     @foreach($Get_OfficialChannel_data_For_Nav as $Nav_OfficialChannel_data)
-                        <li><a href="/channel/official/{{ $Nav_OfficialChannel_data->name }}">{{ $Nav_OfficialChannel_data->name }}</a></li>
+                        <li><a href="/channel/{{ $Nav_OfficialChannel_data->name }}">{{ $Nav_OfficialChannel_data->name }}</a></li>
                     @endforeach
 
                 </ul>
             </li>
-            <li><a href="/open_channel"><span>開放式頻道</span></a></li>
+            <li><a href="/channel/open"><span>開放式頻道</span></a></li>
             <li><a href="/test"><span>教學案例</span></a></li>
 
             <li><a href="contact.htm"><span>聯絡我們</span></a></li>

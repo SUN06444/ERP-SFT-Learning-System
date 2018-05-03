@@ -94,7 +94,7 @@
 @section('subscribe')
     @if(session('user_id'))
         @if(count($User_Subscribe_subchannel)>0)
-            <form name="subscribe" id="subscribe" action="/official_channel/{{session('subchannel_name')}}/dissubscribe" method="post" style="float: right;">
+            <form name="subscribe" id="subscribe" action="/channel/{{session('subchannel_name')}}/dissubscribe" method="post" style="float: right;">
                 <button class="layui-btn layui-btn-normal"   type="submit">
                     <i class="layui-icon">&#xe756;</i>取消訂閱
                 </button>
@@ -102,7 +102,7 @@
                 {{ csrf_field() }}
             </form>
         @else
-            <form name="subscribe" id="subscribe" action="/official_channel/{{session('subchannel_name')}}/subscribe" method="post" style="float: right;">
+            <form name="subscribe" id="subscribe" action="/channel/{{session('subchannel_name')}}/subscribe" method="post" style="float: right;">
                 <button class="layui-btn layui-btn-normal"   type="submit">
                     <i class="layui-icon">&#xe756;</i>訂閱頻道
                 </button>
@@ -171,7 +171,7 @@
         <div class="container">
 
             @if(session()->has('user_id') )
-                @if(session('user_type') == 'A')
+                @if( (session('user_type') == 'A' && $title == '官方頻道') || (session('user_type') == 'G' && $title == '開放式頻道'))
                     <div class="theme-newpopover-mask"></div>
 
                     <div class="pull-right list-view-change">
@@ -181,14 +181,14 @@
                         <div class="theme-popover">
                             <div class="theme-poptit">
                                 <a href="javascript:;" title="关闭" class="close">×</a>
-                                <h3 style=" font-family: 微軟正黑體; font-weight: bold;" >新增 「{{session('officialchannel_name')}}」 影片</h3>
+                                <h3 style=" font-family: 微軟正黑體; font-weight: bold;" >新增 「{{session('subchannel_name')}}」 影片</h3>
                             </div>
 
                             {{-- 錯誤訊息模板元件 --}}
                             @include('components.validationErrorMessage')
                             <div class="theme-popbod dform">
 
-                                <form class="theme-signin" name="add_video" action="/official_channel/add" method="post">
+                                <form class="theme-signin" name="add_video" action="/channel/add" method="post">
                                     <ol>
 
                                         <li>
@@ -214,7 +214,7 @@
 
                                         <input type="hidden" name="views_num" value="0">
                                         <input type="hidden" name="likes_num" value="0">
-                                        <input type="hidden" name="officialchannel_name" value="{{session('officialchannel_name')}}">
+                                        <input type="hidden" name="channel_name" value="{{session('channel_name')}}">
                                         <input type="hidden" name="user_id" value="{{ session('user_id')}}">
                                         <li>
                                             <input class="btn btn-primary" type="submit" name="submit" value=" 確認上傳 " />
@@ -253,7 +253,7 @@
 
                     </div>
 
-                @elseif(session('user_type') == 'G')
+                @elseif(session('user_type') == 'G' && $title == '官方頻道')
 
                     <div class="theme-newpopover-mask"></div>
 
@@ -264,14 +264,14 @@
                         <div class="theme-popover">
                             <div class="theme-poptit">
                                 <a href="javascript:;" title="关闭" class="close">×</a>
-                                <h3 style=" font-family: 微軟正黑體; font-weight: bold;" >反映 「{{session('officialchannel_name')}}」 頻道的影片</h3>
+                                <h3 style=" font-family: 微軟正黑體; font-weight: bold;" >反映 「{{session('subchannel_name')}}」 頻道的影片</h3>
                             </div>
 
                             {{-- 錯誤訊息模板元件 --}}
                             @include('components.validationErrorMessage')
                             <div class="theme-popbod dform">
 
-                                <form class="theme-signin" name="add_video" action="/official_channel/add" method="post">
+                                <form class="theme-signin" name="add_video" action="/channel/add" method="post">
                                     <ol>
 
                                         <li>
@@ -297,7 +297,7 @@
 
                                         <input type="hidden" name="views_num" value="0">
                                         <input type="hidden" name="likes_num" value="0">
-                                        <input type="hidden" name="officialchannel_name" value="{{session('officialchannel_name')}}">
+                                        <input type="hidden" name="name" value="{{session('subchannel_name')}}">
                                         <input type="hidden" name="user_id" value="{{ session('user_id')}}">
                                         <li>
                                             <input class="btn btn-primary" type="submit" name="submit" value=" 確認上傳 " />
@@ -348,9 +348,9 @@
                     <span style="float: left;margin-right: 10px;">排序:</span>
                     <ul id="navi">
 
-                        <li><a class="val1" href="/official_channel/{{session('subchannel_name')}}/sort=time">依發佈時間</a></li>
-                        <li><a class="val2" href="/official_channel/{{session('subchannel_name')}}/sort=views">依觀看人數</a></li>
-                        <li><a class="val3" href="/official_channel/{{session('subchannel_name')}}/sort=likes">依喜愛人數</a></li>
+                        <li><a class="val1" href="/channel/{{session('subchannel_name')}}/sort=time">依發佈時間</a></li>
+                        <li><a class="val2" href="/channel/{{session('subchannel_name')}}/sort=views">依觀看人數</a></li>
+                        <li><a class="val3" href="/channel/{{session('subchannel_name')}}/sort=likes">依喜愛人數</a></li>
 
                     </ul>
                 </nav>
@@ -364,12 +364,12 @@
                 @foreach($Get_videos_data as $videos_data)
                     <article class="col-md-4 video-item">
 
-                        <a href="/official_channel/{{session('subchannel_name')}}/{{ $videos_data->id }}" class="video-prev video-prev-small">
+                        <a href="/channel/{{ $videos_data->subchannel_id }}/{{ $videos_data->id }}" class="video-prev video-prev-small">
                             <img  width="100%" height="100%" src='http://img.youtube.com/vi/{{ $videos_data->video_id }}/mqdefault.jpg'>
                         </a>
 
                         <h3 class="video-title">
-                            <a href="/official_channel/{{session('subchannel_name')}}/{{ $videos_data->id }}"> {{ $videos_data->title }}</a>
+                            <a href="/channel/{{ $videos_data->subchannel_id }}/{{ $videos_data->id }}"> {{ $videos_data->title }}</a>
                         </h3>
 
                         <div class="row video-params">
