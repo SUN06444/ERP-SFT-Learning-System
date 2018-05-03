@@ -27,7 +27,7 @@
                 <ul class="dropdown-menu">
 
                     @foreach($Get_OfficialChannel_data_For_Nav as $Nav_OfficialChannel_data)
-                        <li><a href="/official_channel/{{ $Nav_OfficialChannel_data->name }}">{{ $Nav_OfficialChannel_data->name }}</a></li>
+                        <li><a href="/channel/official/{{ $Nav_OfficialChannel_data->name }}">{{ $Nav_OfficialChannel_data->name }}</a></li>
                     @endforeach
 
                 </ul>

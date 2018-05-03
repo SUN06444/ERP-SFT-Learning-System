@@ -13,7 +13,7 @@ class CreateSubchannelSubscribesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subchannel_subcribes', function (Blueprint $table) {
+        Schema::create('subchannel_subscribes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('subchannel_id');
@@ -28,6 +28,6 @@ class CreateSubchannelSubscribesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subchannel_subcribes');
+        Schema::dropIfExists('subchannel_subscribes');
     }
 }

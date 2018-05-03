@@ -28,3 +28,17 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('/facebook-sign-in-callback', 'UserAuthController@facebookSignInCallbackProcess');
     });
 });
+
+// 頻道&影片
+Route::group(['prefix' => 'channel'], function(){
+    Route::group(['prefix' => 'official'], function() {
+        Route::get('{subchannel_name}','SubChannelController@video_areaPage'); //影片頻道分類
+        Route::get('{subchannel_name}/sort={sort}','SubChannelController@channel_video_area_sortPage'); //影片頻道分類+排序(按時間、瀏覽、喜愛)
+    });
+
+    Route::group(['prefix' => 'open'], function() {
+        Route::get('{subchannel_name}','SubChannelController@video_areaPage'); //影片頻道分類
+        Route::get('{subchannel_name}/sort={sort}','SubChannelController@channel_video_area_sortPage'); //影片頻道分類+排序(按時間、瀏覽、喜愛)
+    });
+
+});
