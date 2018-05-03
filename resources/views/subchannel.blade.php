@@ -185,18 +185,18 @@
                 @include('components.validationErrorMessage')
                 <div class="theme-popbod dform">
 
-                    <form class="theme-signin" name="add_video" action="/open_channel/add" method="post" >
+                    <form class="theme-signin" name="add_video" action="/channel/subchannel/add" method="post" >
                         <ol>
 
                             <li style="padding-left:0px;">
                                 <strong>頻道名稱：</strong>
-                                <input class="ipt" type="text" name="openchannel_name"  placeholder="openchannel_name"/>
+                                <input class="ipt" type="text" name="name"  placeholder="name"/>
                             </li>
                             <li style="padding-left:0px;">
                                 <strong>標籤顏色：</strong>
                                 <div class="color-choose">
                                     <div>
-                                        <input data-image="cadetblue" type="radio" id="cadetblue" name="channel_color" value="cadetblue" checked>
+                                        <input data-image="cadetblue" type="radio" id="cadetblue" name="color" value="cadetblue" checked>
                                         <label for="cadetblue"><span></span></label>
                                     </div>
                                     <div>
@@ -244,8 +244,8 @@
                                 <textarea class="form-control" name="description" rows="4"></textarea>
                             </li>
 
-
-
+                            <input type="hidden" name="channel_id" value="2">
+                            <input type="hidden" name="photo" value="NULL">
                             <input type="hidden" name="user_id" value="{{ session('user_id')}}">
                             <li style="padding-left:0px;margin-bottom: 1px;">
                                 <input class="btn btn-primary" type="submit" name="submit" value=" 確認新增 " />
@@ -299,7 +299,7 @@
                 @foreach($Get_openchannel_data as $openchannel_data)
                     <article class="col-md-4 video-item">
 
-                        <a href="/open_channel/{{ $openchannel_data->name }}">
+                        <a href="/channel/{{ $openchannel_data->name }}">
                             <img style="box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.88);
     border: 3px solid #d3d3d3;border-radius: 15px;" width="350px" height="245px" src='/img/channel.png'>
                         </a>

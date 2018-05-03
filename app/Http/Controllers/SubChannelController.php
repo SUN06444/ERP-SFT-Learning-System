@@ -8,6 +8,7 @@ use App\Video;
 use Validator;  // 驗證器
 use App\Video_Like;
 use App\Video_Collect;
+use App\SubChannel;
 
 class SubChannelController extends Controller
 {
@@ -122,6 +123,44 @@ class SubChannelController extends Controller
         session()->put('subchannel_id', $subchannel_id);
         return view('video_area', $binding);
 
+    }
+
+    public function addsubchannelProcess()
+    {
+
+        // 接收輸入資料
+        $input = request()->all();
+
+        // 驗證規則
+        $rules = [
+            'name'=> [
+                'required',
+                'max:30',
+            ],
+            'color' => [
+                'required',
+            ],
+            'description' => [
+                'required',
+                'max:300',
+            ],
+
+        ];
+
+        // 驗證資料
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+            // 資料驗證錯誤
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $subChannel = SubChannel::create($input);
+
+        // 重新導向到開放式頻道頁面
+        return redirect()->back();
     }
 
     // 頻道(分類頁面)
