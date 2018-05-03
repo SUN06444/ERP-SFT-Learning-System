@@ -171,7 +171,7 @@
         <div class="container">
 
             @if(session()->has('user_id') )
-                @if( (session('user_type') == 'A' && $title == '官方頻道') || (session('user_type') == 'G' && $title == '開放式頻道'))
+                @if( (session('user_type') == 'A') || (session('user_type') == 'G' && $title == '開放式頻道'))
                     <div class="theme-newpopover-mask"></div>
 
                     <div class="pull-right list-view-change">
@@ -188,7 +188,7 @@
                             @include('components.validationErrorMessage')
                             <div class="theme-popbod dform">
 
-                                <form class="theme-signin" name="add_video" action="/channel/add" method="post">
+                                <form class="theme-signin" name="add_video" action="/channel/video/add" method="post">
                                     <ol>
 
                                         <li>
@@ -214,7 +214,13 @@
 
                                         <input type="hidden" name="views_num" value="0">
                                         <input type="hidden" name="likes_num" value="0">
-                                        <input type="hidden" name="channel_name" value="{{session('channel_name')}}">
+                                        @if($title == '官方頻道')
+                                            <input type="hidden" name="status" value="1">
+                                        @elseif($title == '開放式頻道')
+                                            <input type="hidden" name="status" value="0">
+                                        @endif
+                                        <input type="hidden" name="note" value="NULL">
+                                        <input type="hidden" name="subchannel_id" value="{{session('subchannel_id')}}">
                                         <input type="hidden" name="user_id" value="{{ session('user_id')}}">
                                         <li>
                                             <input class="btn btn-primary" type="submit" name="submit" value=" 確認上傳 " />
@@ -364,12 +370,12 @@
                 @foreach($Get_videos_data as $videos_data)
                     <article class="col-md-4 video-item">
 
-                        <a href="/channel/{{ $videos_data->subchannel_id }}/{{ $videos_data->id }}" class="video-prev video-prev-small">
+                        <a href="/channel/{{ $videos_data->subchannel_id }}/v={{ $videos_data->id }}" class="video-prev video-prev-small">
                             <img  width="100%" height="100%" src='http://img.youtube.com/vi/{{ $videos_data->video_id }}/mqdefault.jpg'>
                         </a>
 
                         <h3 class="video-title">
-                            <a href="/channel/{{ $videos_data->subchannel_id }}/{{ $videos_data->id }}"> {{ $videos_data->title }}</a>
+                            <a href="/channel/{{ $videos_data->subchannel_id }}/v={{ $videos_data->id }}"> {{ $videos_data->title }}</a>
                         </h3>
 
                         <div class="row video-params">

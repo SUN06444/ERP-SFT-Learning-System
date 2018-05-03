@@ -36,6 +36,15 @@ Route::group(['prefix' => 'channel'], function(){
     Route::get('{subchannel_name}/sort={sort}','SubChannelController@video_area_sortPage'); //影片頻道分類+排序(按時間、瀏覽、喜愛)
 
     //點擊所選的影片內容
-    Route::get('/{subchannel_id}/{video_id}','SubChannelController@videoPage');
+    Route::get('/{subchannel_id}/v={video_id}','SubChannelController@videoPage');
+
+    //開放式頻道頁面
+    Route::get('/open/subchannel','SubChannelController@subchannelPage');
+    //新增頻道
+    Route::post('/subchannel/add','SubChannelController@addsubchannelProcess');
+    //新增影片
+    Route::post('/video/add','SubChannelController@addvideosProcess');
+    //當會員執行event為like、dislike、collect、discollect影片的動作
+    Route::post('/{video_id}/{event}', 'SubChannelController@video_eventProcess');
 
 });

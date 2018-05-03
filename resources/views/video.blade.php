@@ -72,7 +72,7 @@
 
                             @if(count($User_Like_Video)>0)
                                 @foreach($User_Like_Video as $Like_Data)
-                                    @if( $Like_Data->like_officialchannel_video_id == $videos_data->id)
+                                    @if( $Like_Data->video_id == $videos_data->id)
                                         <form name="dislike" id="dislike" action="/channel/{{$videos_data->id}}/dislike" method="post">
                                             <div class="col-md-6 button-full">
                                                 <button class="btn btn-theme btn-red" type="submit"><i class="fa fa-heart"></i> 已成為您的喜愛</button>
@@ -97,7 +97,7 @@
 
                             @if(count($User_Collect_Video)>0)
                                 @foreach($User_Collect_Video as $Collect_Data)
-                                    @if( $Collect_Data->collect_officialchannel_video_id == $videos_data->id)
+                                    @if( $Collect_Data->video_id == $videos_data->id)
                                         <form name="discollect" id="discollect" action="/channel/{{$videos_data->id}}/discollect" method="post">
                                             <div class="col-md-6 button-full">
                                                 <button class="btn btn-theme btn-orange" type="submit"><i class="fa fa-check"></i> 已收藏</button>

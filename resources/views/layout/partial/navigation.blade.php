@@ -32,7 +32,7 @@
 
                 </ul>
             </li>
-            <li><a href="/channel/open"><span>開放式頻道</span></a></li>
+            <li><a href="/channel/open/subchannel"><span>開放式頻道</span></a></li>
             <li><a href="/test"><span>教學案例</span></a></li>
 
             <li><a href="contact.htm"><span>聯絡我們</span></a></li>
