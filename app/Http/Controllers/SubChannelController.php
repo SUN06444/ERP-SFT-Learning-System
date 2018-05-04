@@ -10,6 +10,7 @@ use App\Video_Like;
 use App\Video_Collect;
 use App\SubChannel;
 use App\SubChannel_Subscribe;
+use Illuminate\Support\Facades\Mail;
 
 class SubChannelController extends Controller
 {
@@ -260,6 +261,51 @@ class SubChannelController extends Controller
         }
 
         $Videos = Video::create($input);
+
+        //以下為處理訂閱頻道的會員，以信件通知
+        $subchannel_id = $input['subchannel_id'];
+
+        $get_subchannel_data = DB::table('subchannels')
+            ->where('id', '=', $subchannel_id)
+            ->get();
+
+        foreach ($get_subchannel_data as $data){
+            $subchannel_name= $data->name;
+        }
+
+        $get_user_subscribe = DB::table('subchannel_subscribes')
+            ->where('subchannel_id', '=', $subchannel_id)
+            ->count();
+
+        if($get_user_subscribe>0){
+
+            $get_user_data = DB::table('users')
+                ->where('id', '=', session('user_id'))
+                ->get();
+
+            foreach ($get_user_data as $user_data){
+                $nickname = $user_data->nickname;
+                $email = $user_data->email;
+            }
+
+            // 寄送註冊通知信
+            $mail_binding = [
+                'nickname' => $nickname,
+                'email' =>  $email,
+                'subchannel_name' => $subchannel_name
+            ];
+
+            Mail::send('email.subscribeEmailNotification', $mail_binding,
+                function ($mail) use ($mail_binding){
+                    //收件人
+                    $mail->to($mail_binding['email']);
+                    //寄件人
+                    $mail->from('3a432016@gm.student.ncut.edu.tw');
+                    //郵件主旨
+                    $subject = '[通知]'.'「'.$mail_binding['subchannel_name'].'」'.'頻道，又出新影片囉~';
+                    $mail->subject($subject);
+                });
+        }
 
         // 重新導向到影片區
         return redirect()->back();
