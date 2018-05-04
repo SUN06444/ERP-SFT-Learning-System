@@ -47,4 +47,9 @@ Route::group(['prefix' => 'channel'], function(){
     //當會員執行event為like、dislike、collect、discollect影片的動作
     Route::post('/{video_id}/{event}', 'SubChannelController@video_eventProcess');
 
+    //會員訂閱頻道 & 會員取消訂閱頻道
+    Route::post('/{subchannel_name}/{user_id}/subscribe','SubChannelController@subscribe_channelProcess');
+    Route::post('/{subchannel_name}/{user_id}/dissubscribe','SubChannelController@dissubscribe_channelProcess');
+
+
 });
