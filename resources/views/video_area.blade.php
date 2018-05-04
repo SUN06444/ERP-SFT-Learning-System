@@ -94,7 +94,7 @@
 @section('subscribe')
     @if(session('user_id'))
         @if(count($User_Subscribe_subchannel)>0)
-            <form name="subscribe" id="subscribe" action="/channel/{{session('subchannel_name')}}/dissubscribe" method="post" style="float: right;">
+            <form name="subscribe" id="subscribe" action="/channel/{{session('subchannel_name')}}/{{session('user_id')}}/dissubscribe" method="post" style="float: right;">
                 <button class="layui-btn layui-btn-normal"   type="submit">
                     <i class="layui-icon">&#xe756;</i>取消訂閱
                 </button>
@@ -102,7 +102,7 @@
                 {{ csrf_field() }}
             </form>
         @else
-            <form name="subscribe" id="subscribe" action="/channel/{{session('subchannel_name')}}/subscribe" method="post" style="float: right;">
+            <form name="subscribe" id="subscribe" action="/channel/{{session('subchannel_name')}}/{{session('user_id')}}/subscribe" method="post" style="float: right;">
                 <button class="layui-btn layui-btn-normal"   type="submit">
                     <i class="layui-icon">&#xe756;</i>訂閱頻道
                 </button>

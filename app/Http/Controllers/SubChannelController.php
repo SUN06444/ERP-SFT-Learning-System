@@ -9,6 +9,7 @@ use Validator;  // 驗證器
 use App\Video_Like;
 use App\Video_Collect;
 use App\SubChannel;
+use App\SubChannel_Subscribe;
 
 class SubChannelController extends Controller
 {
@@ -378,6 +379,55 @@ class SubChannelController extends Controller
         DB::table('videos')
             ->where('id', $video_id)
             ->update(['views_num' => $views_num-1]);
+
+        // 重新導向到影片區
+        return redirect()->back();
+
+    }
+
+    public function subscribe_channelProcess($subnchannel_name, $user_id){
+
+        $Get_subchannel_data = DB::table('subchannels')->where('name', '=', $subnchannel_name)->get();
+        //取得開放頻道id
+        foreach ($Get_subchannel_data as $subchannel_data){
+            $subchannel_id = $subchannel_data->id;
+        }
+
+        //查詢使用者訂閱的影片數量(一部影片只能有一筆訂閱資料)
+        $subchannel_subscribe_limit = DB::table('subchannel_subscribes')
+            ->where('user_id', '=', session('user_id'))
+            ->where('subchannel_id', '=', $subchannel_id)
+            ->count();
+
+        if ($subchannel_subscribe_limit == 0){
+            SubChannel_Subscribe::create(array('user_id' => $user_id, 'subchannel_id' => $subchannel_id));
+        }
+
+        // 重新導向到影片區
+        return redirect()->back();
+
+    }
+
+    public function dissubscribe_channelProcess($subnchannel_name, $user_id){
+
+        $Get_subchannel_data = DB::table('subchannels')->where('name', '=', $subnchannel_name)->get();
+        //取得開放頻道id
+        foreach ($Get_subchannel_data as $subchannel_data){
+            $subchannel_id = $subchannel_data->id;
+        }
+
+        //查詢使用者訂閱的影片數量(一部影片只能有一筆訂閱資料)
+        $subchannel_subscribe_limit = DB::table('subchannel_subscribes')
+            ->where('user_id', '=', session('user_id'))
+            ->where('subchannel_id', '=', $subchannel_id)
+            ->count();
+
+        if ($subchannel_subscribe_limit == 1){
+            DB::table('subchannel_subscribes')
+                ->where('user_id', '=',$user_id)
+                ->where('subchannel_id', '=', $subchannel_id)
+                ->delete();
+        }
 
         // 重新導向到影片區
         return redirect()->back();
