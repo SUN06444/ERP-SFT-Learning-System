@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://ncutim-learning-system.herokuapp.com/'),
+    'url' => env('APP_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ return [
     |
     */
 
-    'key' => 'base64:om/QFIezlHdPZ3iOx+VFIxeWlvxqEjG30tMsbe+Yex0=',
+    'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 
