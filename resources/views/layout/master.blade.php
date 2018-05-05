@@ -20,7 +20,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-
     </head>
 
     <body>
@@ -53,19 +52,29 @@
 
         @yield('content')
 
+        <!--Start of Zendesk Chat Script-->
+        <script type="text/javascript">
+            window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+                d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+            _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+                $.src="https://v2.zopim.com/?5gEsfmcNE6Qnrw1cgSX53MzjdHeLyCLO";z.t=+new Date;$.
+                    type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+        </script>
+        <!--End of Zendesk Chat Script-->
 
         @include('layout.partial.footer')
+
+        <script src="/script/script.js"></script>
 
         <!-- JavaScript Files -->
         <script src="/plugin/jquery-1.10.2.min.js"></script>
         <script src="/plugin/bootstrap/js/bootstrap.min.js"></script>
         <script src="/plugin/jquery.cuteTime.min.js"></script>
-         <script src="/script/script.js"></script>
+
         <!-- / JavaScript Files -->
 
         <script src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/js/prettify/prettify.js"></script>
-        <script src="https://cdn.bootcss.com/prettify/r298/run_prettify.js"></script>
         <script src="/js/layout.js"></script>
 
         <script src="/js/nav/amazeui.min.js"></script>

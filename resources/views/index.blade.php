@@ -50,7 +50,7 @@
                                  </main>
                   -->
 
-                              <img src="https://wallpaperscraft.com/image/book_flower_bookmark_page_97250_3840x2160.jpg" alt="" />
+                              <img src="https://images.wallpaperscraft.com/image/book_flower_bookmark_page_97250_1280x720.jpg" alt="" />
 
                                <div class="container">
                                    <div class="carousel-caption" style="color: #080808;font-weight: bolder;">
@@ -264,16 +264,16 @@
 
 @include('layout.partial.footer')
 
+    <script src="/script/script.js"></script>
     <!-- JavaScript Files -->
     <script src="/plugin/jquery-1.10.2.min.js"></script>
     <script src="/plugin/bootstrap/js/bootstrap.min.js"></script>
     <script src="/plugin/jquery.cuteTime.min.js"></script>
-    <script src="/script/script.js"></script>
+
     <!-- / JavaScript Files -->
 
     <script src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/prettify/prettify.js"></script>
-    <script src="https://cdn.bootcss.com/prettify/r298/run_prettify.js"></script>
     <script src="/js/layout.js"></script>
 </body>
 </html>
