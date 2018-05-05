@@ -13,7 +13,9 @@
 
 Route::get('/','SubChannelController@index');
 
-Route::get('/test','SubChannelController@index_articles');
+Route::get('/articles','SubChannelController@index_articles');
+
+Route::get('/faq','SubChannelController@faq');
 
 // 使用者(會員)
 Route::group(['prefix' => 'user'], function(){

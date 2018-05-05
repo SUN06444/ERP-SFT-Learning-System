@@ -27,6 +27,19 @@ class SubChannelController extends Controller
         return view('articles', $binding);
     }
 
+    public function faq()
+    {
+        $Get_OfficialChannel_data_For_Nav = DB::table('subchannels')
+            ->where('channel_id','=','1')
+            ->get();
+
+        $binding = ['title' => '常見問題' , 'subject' =>'FAQ - 常見問題',
+            'Get_OfficialChannel_data_For_Nav' => $Get_OfficialChannel_data_For_Nav,
+        ];
+
+        return view('faq', $binding);
+    }
+
     // 首頁 頁面
     public function index(){
 
