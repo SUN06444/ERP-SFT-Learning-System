@@ -13,6 +13,8 @@
 
 Route::get('/','SubChannelController@index');
 
+Route::get('/test','SubChannelController@index_articles');
+
 // 使用者(會員)
 Route::group(['prefix' => 'user'], function(){
     // 使用者驗證
@@ -50,6 +52,5 @@ Route::group(['prefix' => 'channel'], function(){
     //會員訂閱頻道 & 會員取消訂閱頻道
     Route::post('/{subchannel_name}/{user_id}/subscribe','SubChannelController@subscribe_channelProcess');
     Route::post('/{subchannel_name}/{user_id}/dissubscribe','SubChannelController@dissubscribe_channelProcess');
-
-
+    
 });

@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Mail;
 
 class SubChannelController extends Controller
 {
+    public function index_articles()
+    {
+        $Get_OfficialChannel_data_For_Nav = DB::table('subchannels')
+            ->where('channel_id','=','1')
+            ->get();
+
+        $binding = ['title' => '教學案例' , 'subject' => '蛋黃酥 - 案例教學 (ERP整合SFT)',
+            'Get_OfficialChannel_data_For_Nav' => $Get_OfficialChannel_data_For_Nav,
+        ];
+
+        return view('articles', $binding);
+    }
+
     // 首頁 頁面
     public function index(){
 
