@@ -278,7 +278,7 @@ input:focus {
     .docs-nav.fixed {
         position: fixed;
         /*top: 49px;*/
-        left: 20%;
+        left: 18%;
         width: 282px;
     }
 
