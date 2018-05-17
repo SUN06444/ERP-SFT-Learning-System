@@ -39,12 +39,12 @@
                                 <div class="row  videos-list" style="display: flex;flex-wrap: wrap; ">
                                     @foreach($SimilarVideos as $similarVideos)
                                         <article class="col-md-6  video-item">
-                                            <a href="/channel/{{ $similarVideos->subchannel_id }}/{{ $similarVideos->id }}" class="video-prev video-prev-small">
+                                            <a href="/channel/{{ $similarVideos->subchannel_id }}/v={{ $similarVideos->id }}" class="video-prev video-prev-small">
                                                 <img  width="100%" height="100%" src='http://img.youtube.com/vi/{{ $similarVideos->video_id }}/mqdefault.jpg'>
                                             </a>
-                                            <h3 class="video-title" style="font-family: 微軟正黑體; height: 13%;"><a href="/channel/{{ $similarVideos->subchannel_id }}/{{ $similarVideos->id }}"> {{ $similarVideos->title }}</a></h3>
+                                            <h3 class="video-title" style="font-family: 微軟正黑體; height: 13%;"><a href="/channel/{{ $similarVideos->subchannel_id }}/v={{ $similarVideos->id }}"> {{ $similarVideos->title }}</a></h3>
 
-                                            <p class="button-full"><a  href="/channel/{{ $similarVideos->subchannel_id }}/{{ $similarVideos->id }}" class="btn btn-theme btn-green" style="background-color: #006dcc;     font-size: 18px;"><i class="fa fa-arrow-circle-right"></i> 立即前往</a></p>
+                                            <p class="button-full"><a  href="/channel/{{ $similarVideos->subchannel_id }}/v={{ $similarVideos->id }}" class="btn btn-theme btn-green" style="background-color: #006dcc;     font-size: 18px;"><i class="fa fa-arrow-circle-right"></i> 立即前往</a></p>
                                         </article>
                                     @endforeach
                                 </div>

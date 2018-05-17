@@ -51,7 +51,7 @@
 
 <div class="wrapper" style="border-radius: 50px;
     border: 3px solid #333;
-    margin: 30px 13%;">
+    margin: 30px 16%;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
