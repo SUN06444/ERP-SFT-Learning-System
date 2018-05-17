@@ -17,6 +17,62 @@ Route::get('/articles','SubChannelController@index_articles');
 
 Route::get('/faq','SubChannelController@faq');
 
+//管理人員後台
+Route::group(['prefix' => 'admin'], function(){
+
+    Route::get('/','Admin\AdminController@index');
+
+    Route::get('/question_list','Admin\AdminController@question_list');
+
+
+    Route::group(['prefix' => 'subchannel'], function(){
+
+        Route::group(['prefix' => '{channel}'], function(){
+            Route::get('/list','Admin\SubChannelController@list');
+            Route::get('/edit/{id}','Admin\SubChannelController@edit');
+            Route::post('/update/{id}','Admin\SubChannelController@update');
+        });
+
+    });
+
+
+    Route::group(['prefix' => 'video'], function(){
+
+        Route::group(['prefix' => '{video_type}'], function(){
+            Route::get('/list','Admin\VideoController@list');
+            Route::get('/{status}/{id}','Admin\VideoController@edit');
+        });
+
+        //官方頻道 可編輯影片
+        Route::post('/official/update/{id}','Admin\VideoController@update');
+
+        //開放式頻道 審核影片通不通過，影片不通過新增備註
+        Route::post('/open/pass/{id}','Admin\VideoController@pass');
+        Route::post('/open/nopass/{id}','Admin\VideoController@nopass');
+        Route::post('/open/note/{id}','Admin\VideoController@note');
+
+    });
+
+    Route::group(['prefix' => 'user'], function(){
+        Route::group(['prefix' => 'admin'], function(){
+            Route::get('/list','Admin\UserController@admin_list');
+            Route::get('/edit/{id}','Admin\UserController@admin_edit');
+            Route::post('/update/{id}','Admin\UserController@admin_update');
+        });
+
+        Route::group(['prefix' => 'general'], function(){
+            Route::get('/list','Admin\UserController@general_list');
+            Route::get('/edit/{id}','Admin\UserController@general_edit');
+            Route::post('/update/{id}','Admin\UserController@general_update');
+        });
+    });
+
+    Route::get('/videos_list','Admin\AdminController@videos_list');
+
+    Route::get('/users_list','Admin\AdminController@users_list');
+});
+
+
 // 使用者(會員)
 Route::group(['prefix' => 'user'], function(){
     // 使用者驗證
