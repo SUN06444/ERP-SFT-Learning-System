@@ -16,7 +16,7 @@ class DataSeeder extends Seeder
     public function run()
     {
         //使用者建立
-        UserAuthEloquent::create([ 'email' => '3a432016@gm.student.ncut.ecu.tw',
+        UserAuthEloquent::create([ 'email' => 'sun.ios06444@gmail.com',
             'password' => '$2y$10$GZT5qC1/ctzXWfsAuVOc2O02TVd0UussaJMjwMHzuJa3xy2aqcjJq'
             , 'facebook_id' => 'NULL', 'type' => 'A', 'nickname' => '靖茹', 'note' => 'NULL'
         ]);
@@ -40,8 +40,8 @@ class DataSeeder extends Seeder
         //總頻道建立
         ChannelEloquent::create(['name' => '官方頻道','created_at' =>'2018-04-01 08:00:00',
             'updated_at' => '2018-04-01 08:00:00']);
-        ChannelEloquent::create(['name' => '開放式頻道','created_at' =>'2018-04-01 08:02:20',
-            'updated_at' => '2018-04-01 08:02:20']);
+        ChannelEloquent::create(['name' => '開放式頻道','created_at' =>'2018-04-02 08:02:20',
+            'updated_at' => '2018-04-02 08:02:20']);
 
         //子頻道建立
         SubChannelEloquent::create(['user_id' => '2','channel_id' => '1','name' => 'ERP廠區生產追蹤 - 動畫篇',
@@ -64,55 +64,80 @@ class DataSeeder extends Seeder
             'title' => '[蛋黃酥案例]-生產線建立作業-01', 'author' => 'Jing-Ru Sun', 'video_id' => 'go6q_ZKRnvE',
             'content' => '基本資料管理系統 - 生產線資料 : 以生產「蛋黃酥禮盒」為案例，總共分成三條生產線。裡面含有BOM表介紹、產品製程說明。',
             'views_num' => '15', 'likes_num' => '0' ,
-            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-01 08:25:21',
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-01 03:25:21',
+            'updated_at' => '2018-04-01 03:25:21'
+        ]);
+
+        VideoEloquent::create(['user_id' => '2', 'subchannel_id' => '1',
+            'title' => 'ERP 和 SFT 小教室', 'author' => '鄔琇容', 'video_id' => '-pSoxI-69fA',
+            'content' => '透過舉例的方式，簡單說明ERP和SFT之間的關聯性。動畫使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
+            'views_num' => '20', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-01 05:25:21',
+            'updated_at' => '2018-04-01 05:25:21'
+        ]);
+
+        VideoEloquent::create(['user_id' => '2', 'subchannel_id' => '1',
+            'title' => 'ERP介紹小故事-ERP是甚麼?', 'author' => '鄔琇容', 'video_id' => '5S5tXbeCWQI',
+            'content' => '透過採買的流程介紹什麼是ERP。使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
+            'views_num' => '13', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-01 06:25:21',
+            'updated_at' => '2018-04-01 06:25:21'
+        ]);
+
+        VideoEloquent::create(['user_id' => '2', 'subchannel_id' => '1',
+            'title' => 'SFT小故事Part1-蛋黃酥禮盒小故事劇場', 'author' => '鄔琇容', 'video_id' => 'kWsRyCwESZE',
+            'content' => 'SFT小故事Part1。使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
+            'views_num' => '8', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-01 02:25:21',
             'updated_at' => '2018-04-01 08:25:21'
         ]);
 
         VideoEloquent::create(['user_id' => '2', 'subchannel_id' => '1',
-            'title' => 'ERP和SFT簡介小短片-01	', 'author' => '鄔琇容', 'user_id' => '1', 'video_id' => 'BaR3xOdj5mw',
-            'content' => '使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
-            'views_num' => '20', 'likes_num' => '0' ,
-            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-02 08:25:21',
+            'title' => 'SFT小故事Part2-蛋黃酥禮盒小故事劇場', 'author' => '鄔琇容', 'video_id' => 'v72tg7C1Yw4',
+            'content' => 'SFT小故事Part2。使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
+            'views_num' => '3', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-02 03:25:21',
             'updated_at' => '2018-04-02 08:25:21'
         ]);
 
         VideoEloquent::create(['user_id' => '2', 'subchannel_id' => '1',
-            'title' => 'ERP和SFT小故事-如何製作蛋黃酥禮盒Part1', 'author' => '鄔琇容', 'video_id' => 'ZWN0xbp20SY',
-            'content' => '使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
-            'views_num' => '13', 'likes_num' => '0' ,
-            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-03 08:25:21',
+            'title' => 'SFT小故事Part3-蛋黃酥禮盒小故事劇場', 'author' => '鄔琇容', 'video_id' => 'wLa07HUxmIs',
+            'content' => 'SFT小故事Part3。使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
+            'views_num' => '3', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-03 04:25:21',
             'updated_at' => '2018-04-03 08:25:21'
         ]);
 
         VideoEloquent::create(['user_id' => '2', 'subchannel_id' => '1',
-            'title' => 'ERP和SFT小故事-如何製作蛋黃酥禮盒Part2', 'author' => '鄔琇容', 'video_id' => 'QYkE9jdLEsQ',
-            'content' => '使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
-            'views_num' => '8', 'likes_num' => '0' ,
-            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-04 08:25:21',
+            'title' => 'SFT小故事Part4-蛋黃酥禮盒小故事劇場', 'author' => '鄔琇容', 'video_id' => 'aHjY2Bh5PTM',
+            'content' => 'SFT小故事Part4。使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
+            'views_num' => '3', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-04 05:25:21',
             'updated_at' => '2018-04-04 08:25:21'
         ]);
 
         VideoEloquent::create(['user_id' => '2', 'subchannel_id' => '1',
-            'title' => 'ERP和SFT小故事-如何製作蛋黃酥禮盒Part3', 'author' => '鄔琇容', 'video_id' => 'UDk5GMSy0TY',
-            'content' => '使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
-            'views_num' => '3', 'likes_num' => '0' ,
-            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-05 08:25:21',
+            'title' => 'SFT小故事Part5(完)-蛋黃酥禮盒小故事劇場', 'author' => '鄔琇容', 'video_id' => 'sDQLRIaUF8I',
+            'content' => 'SFT小故事Part5。使用軟體為 crazytalk animator 3 和 威力導演後製 和 工研院的文字語音web服務',
+            'views_num' => '2', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-05 06:25:21',
             'updated_at' => '2018-04-05 08:25:21'
         ]);
 
+
         VideoEloquent::create(['user_id' => '3', 'subchannel_id' => '2',
-            'title' => '[蛋黃酥案例]-製程代號建立作業-02', 'author' => '賴佳宜', 'video_id' => 'M65JYHg2Dqg',
-            'content' => 'ERP 製程代號建立作業的過程介紹',
-            'views_num' => '10', 'likes_num' => '0' ,
+            'title' => '[蛋黃酥案例]-品號建立作業-02', 'author' => '賴佳宜', 'video_id' => 'QdZpZutnLhE',
+            'content' => 'ERP 品號建立作業的過程介紹',
+            'views_num' => '8', 'likes_num' => '0' ,
             'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-06 08:25:21',
             'updated_at' => '2018-04-06 08:25:21'
         ]);
         VideoEloquent::create(['user_id' => '3', 'subchannel_id' => '2',
-            'title' => '[蛋黃酥案例]-品號建立作業-03', 'author' => '賴佳宜', 'video_id' => 'QdZpZutnLhE',
-            'content' => 'ERP 品號建立作業的過程介紹',
-            'views_num' => '8', 'likes_num' => '0' ,
-            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-07 08:25:21',
-            'updated_at' => '2018-04-07 08:25:21'
+            'title' => '[蛋黃酥案例]-製程代號建立作業-03', 'author' => '賴佳宜', 'video_id' => 'M65JYHg2Dqg',
+            'content' => 'ERP 製程代號建立作業的過程介紹',
+            'views_num' => '10', 'likes_num' => '0' ,
+            'status' => '1', 'note' => 'NULL' , 'created_at' =>'2018-04-07 07:25:21',
+            'updated_at' => '2018-04-07 07:25:21'
         ]);
 
         VideoEloquent::create(['user_id' => '3', 'subchannel_id' => '2',
@@ -122,6 +147,31 @@ class DataSeeder extends Seeder
             'status' => '1', 'note' => 'NULL' ,'created_at' =>'2018-04-08 08:25:21',
             'updated_at' => '2018-04-08 08:25:21'
         ]);
+
+        VideoEloquent::create(['user_id' => '3', 'subchannel_id' => '2',
+            'title' => '[蛋黃酥案例]-SFT操作過程(含線上派工)-Part1', 'author' => '賴佳宜', 'video_id' => 'PE-LydpAl8g',
+            'content' => 'SFT操作過程(含線上派工)-Part1',
+            'views_num' => '18', 'likes_num' => '0',
+            'status' => '1', 'note' => 'NULL' ,'created_at' =>'2018-04-08 09:25:21',
+            'updated_at' => '2018-04-08 09:25:21'
+        ]);
+
+        VideoEloquent::create(['user_id' => '3', 'subchannel_id' => '2',
+            'title' => '[蛋黃酥案例]-SFT操作過程(含線上派工)-Part2', 'author' => '賴佳宜', 'video_id' => 'uYGnm_ju_Bs',
+            'content' => 'SFT操作過程(含線上派工)-Part2',
+            'views_num' => '20', 'likes_num' => '0',
+            'status' => '1', 'note' => 'NULL' ,'created_at' =>'2018-04-08 10:25:21',
+            'updated_at' => '2018-04-08 10:25:21'
+        ]);
+
+        VideoEloquent::create(['user_id' => '3', 'subchannel_id' => '2',
+            'title' => '[蛋黃酥案例]-SFT操作過程(不含線上派工)', 'author' => '賴佳宜', 'video_id' => '7br5fptA7X0',
+            'content' => 'SFT操作過程(不含線上派工)',
+            'views_num' => '16', 'likes_num' => '0',
+            'status' => '1', 'note' => 'NULL' ,'created_at' =>'2018-04-08 11:25:21',
+            'updated_at' => '2018-04-08 11:25:21'
+        ]);
+
 
         VideoEloquent::create(['user_id' => '4', 'subchannel_id' => '3',
             'title' => 'NCUT馬座自動倉儲', 'author' => 'NCUT工業工程管理學系', 'video_id' => 'K6Qvvirsi8o',
