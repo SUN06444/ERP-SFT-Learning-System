@@ -16,7 +16,7 @@ class CreateVideoLikesTable extends Migration
         Schema::create('video_likes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('video_id');
+            $table->integer('like_video_id');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateVideoCollectsTable extends Migration
         Schema::create('video_collects', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('video_id');
+            $table->integer('collect_video_id');
             $table->timestamps();
         });
     }

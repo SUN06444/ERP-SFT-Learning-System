@@ -13,6 +13,6 @@ class Video_Collect extends Model
     // 可以大量指定異動的欄位（Mass Assignment）
     protected  $fillable = [
         'user_id',
-        'video_id',
+        'collect_video_id',
     ];
 }
