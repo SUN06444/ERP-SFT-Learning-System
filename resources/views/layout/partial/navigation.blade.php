@@ -65,10 +65,15 @@
                     <li class="dropdown" >
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #26abe2;"><span>{{ session('user_nickname')}}</span> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            @if(session('user_type') == 'A')
+                                <li><a href="/admin">管理人員後台</a></li>
+
+                                <li><a href="/user/auth/sign-out">登出</a></li>
+                            @else
                             <li><a href="/user/videos/collect/{{ session('user_id')}}">檢視影片</a></li>
-                            <li><a href="/user/videos/subscribes">我的訂閱</a></li>
 
                             <li><a href="/user/auth/sign-out">登出</a></li>
+                            @endif
                         </ul>
                     </li>
                 @else

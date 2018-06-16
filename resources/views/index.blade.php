@@ -57,8 +57,8 @@
                                        <p class="header animated" data-animation="fadeInUp" data-animation-delay="0.2s" style="font-style:oblique;">&nbsp;『學習的目的在於享受過程 ~』</p>
                                        <p class="header header-small animated" data-animation="fadeInUp" data-animation-delay="0.8s">&nbsp;&nbsp;何謂 ERP ? 何謂 SFT ?<br/>&nbsp;&nbsp;讓我們一同走進工業4.0的新思維</p>
                                        <p class="buttons animated" data-animation="fadeIn" data-animation-delay="1.6s">
-                                           &nbsp;&nbsp;<a href="plans.htm" class="btn btn-theme btn-orange">開 始 學 習</a>
-                                           &nbsp;&nbsp;<a href="video.htm" class="btn btn-theme btn-green"><i class="fa fa-play"></i>看 影 片</a>
+                                           &nbsp;&nbsp;<a href="/articles" class="btn btn-theme btn-orange">開 始 學 習</a>
+                                           &nbsp;&nbsp;<a href="/channel/ERP廠區生產追蹤 - 動畫篇" class="btn btn-theme btn-green"><i class="fa fa-play"></i>看 影 片</a>
                                        </p>
                                    </div>
                                </div>
@@ -72,8 +72,8 @@
                                       <p class="header animated" data-animation="fadeInUp" data-animation-delay="0.2s" style="font-style:oblique;"><strong></strong>『如何邁向製程自動化 ??』</p>
                                       <p class="header header-small animated" data-animation="fadeInUp" data-animation-delay="0.8s"> 只擁有ERP這台汽車是不夠的<br/>您還得搭配 SFT 這個導航<br/><strong>它能帶你到想去的地方</strong></p>
                                       <p class="buttons animated" data-animation="fadeIn" data-animation-delay="1.6s">
-                                          <a href="plans.htm" class="btn btn-theme btn-orange">Get started</a>
-                                          <a href="plans.htm" class="btn btn-theme btn-green"><i class="fa fa-play"></i> See pricing</a>
+                                          <a href="/articles" class="btn btn-theme btn-orange">開 始 學 習</a>
+                                          <a href="/channel/ERP廠區生產追蹤 - 動畫篇" class="btn btn-theme btn-green"><i class="fa fa-play"></i>看 影 片</a>
                                       </p>
                                   </div>
                               </div>

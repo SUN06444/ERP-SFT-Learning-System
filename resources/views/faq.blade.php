@@ -49,9 +49,9 @@
     </div>
 </div>
 
-<div class="wrapper" style="border-radius: 50px;
+<div class="wrapper" style="border-radius: 35px;
     border: 3px solid #333;
-    margin: 30px 16%;">
+        margin: 20px 13%;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

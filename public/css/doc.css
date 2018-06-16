@@ -266,8 +266,9 @@ input:focus {
 @media only screen and (min-width: 960px) {
     .docs-nav {
         position: absolute;
+        right: 78%;
         top: 0;
-        width: 240px;
+        width: 282px;
 
         -webkit-transition: top linear 50ms;
         -moz-transition: top linear 50ms;
@@ -277,7 +278,6 @@ input:focus {
 
     .docs-nav.fixed {
         position: fixed;
-        /*top: 49px;*/
         left: 18%;
         width: 282px;
     }

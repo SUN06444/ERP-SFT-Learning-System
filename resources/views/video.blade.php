@@ -36,7 +36,7 @@
                                     <h2 style="font-family: 微軟正黑體; font-weight: bold;">-- 類似的教學影片 --</h2>
                                 @endif
 
-                                <div class="row  videos-list" style="display: flex;flex-wrap: wrap; ">
+                                <div class="row  videos-list" style="flex-wrap: wrap; ">
                                     @foreach($SimilarVideos as $similarVideos)
                                         <article class="col-md-6  video-item">
                                             <a href="/channel/{{ $similarVideos->subchannel_id }}/v={{ $similarVideos->id }}" class="video-prev video-prev-small">
@@ -72,7 +72,7 @@
 
                             @if(count($User_Like_Video)>0)
                                 @foreach($User_Like_Video as $Like_Data)
-                                    @if( $Like_Data->video_id == $videos_data->id)
+                                    @if( $Like_Data->like_video_id == $videos_data->id)
                                         <form name="dislike" id="dislike" action="/channel/{{$videos_data->id}}/dislike" method="post">
                                             <div class="col-md-6 button-full">
                                                 <button class="btn btn-theme btn-red" type="submit"><i class="fa fa-heart"></i> 已成為您的喜愛</button>
@@ -97,7 +97,7 @@
 
                             @if(count($User_Collect_Video)>0)
                                 @foreach($User_Collect_Video as $Collect_Data)
-                                    @if( $Collect_Data->video_id == $videos_data->id)
+                                    @if( $Collect_Data->collect_video_id == $videos_data->id)
                                         <form name="discollect" id="discollect" action="/channel/{{$videos_data->id}}/discollect" method="post">
                                             <div class="col-md-6 button-full">
                                                 <button class="btn btn-theme btn-orange" type="submit"><i class="fa fa-check"></i> 已收藏</button>
@@ -119,13 +119,6 @@
                             @endif
                         </div>
 
-                        @if(session()->has('user_id') )
-                            @if(session('user_type') == 'A')
-                                <p class="button-full buttons-margin-horizontal" ><a href="/channel/{{$videos_data->subchannel_id}}" class="btn btn-theme btn-green" style="background-color:#555;"><i class="fa fa-exclamation-circle"></i> 編輯影片</a></p>
-                            @elseif(session('user_type') == 'G')
-                                <p class="button-full buttons-margin-horizontal" ><a href="/channel/{{$videos_data->subchannel_id}}" class="btn btn-theme btn-green" style="background-color:#555;"><i class="fa fa-exclamation-circle"></i> 反映影片</a></p>
-                            @endif
-                        @endif
 
 
                         <p class="button-full buttons-margin-horizontal" ><a href="/channel/{{ session('subchannel_name') }}" class="btn btn-theme btn-green"><i class="fa fa-arrow-circle-left"></i> 返回頻道</a></p>

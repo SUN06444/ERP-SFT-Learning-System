@@ -185,7 +185,7 @@
                 @include('components.validationErrorMessage')
                 <div class="theme-popbod dform">
 
-                    <form class="theme-signin" name="add_video" action="/channel/subchannel/add" method="post" >
+                    <form class="theme-signin" name="add_video" action="/channel/subchannel/add" method="post" enctype="multipart/form-data" >
                         <ol>
 
                             <li style="padding-left:0px;">
@@ -240,12 +240,19 @@
                             </li>
 
                             <li style="padding-left:0px;">
+                                <strong>頻道封面：</strong>
+                            </li>
+
+                            <!-- accept 限制上傳檔案類型。多檔案上傳 name 的屬性值須定義為 array -->
+                            <input type="file" name="photo" accept="image/jpeg,image/jpg,image/gif,image/png"
+                                   style="margin-bottom: 20px;">
+
+                            <li style="padding-left:0px;">
                                 <strong>內容描素：</strong>
                                 <textarea class="form-control" name="description" rows="4"></textarea>
                             </li>
 
                             <input type="hidden" name="channel_id" value="2">
-                            <input type="hidden" name="photo" value="NULL">
                             <input type="hidden" name="user_id" value="{{ session('user_id')}}">
                             <li style="padding-left:0px;margin-bottom: 1px;">
                                 <input class="btn btn-primary" type="submit" name="submit" value=" 確認新增 " />

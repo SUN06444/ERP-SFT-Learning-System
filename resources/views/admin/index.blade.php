@@ -13,7 +13,7 @@
                         <a href="javascript:;">admin</a>
                         <dl class="layui-nav-child"> <!-- 二级菜单 -->
                             <dd><a href="">个人信息</a></dd>
-                            <dd><a href="/login.html">登出</a></dd>
+                            <dd><a href="/logout">登出</a></dd>
                         </dl>
                     </li>
                     <!-- <li class="layui-nav-item">
@@ -28,27 +28,7 @@
         <div class="layui-side layui-bg-black x-side">
             <div class="layui-side-scroll">
                 <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="side">
-                    <li class="layui-nav-item">
-                        <a class="javascript:;" href="javascript:;">
-                            <i class="layui-icon" style="top: 3px;">&#xe607;</i><cite>問題管理</cite>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd class="">
-                            <dd class="">
-                                <a href="javascript:;" _href="/admin/question_list">
-                                    <cite>問題列表</cite>
-                                </a>
-                            </dd>
-                            </dd>
-                            <dd class="">
-                            <dd class="">
-                                <a href="javascript:;" _href="/question-del.html">
-                                    <cite>刪除問題</cite>
-                                </a>
-                            </dd>
-                            </dd>
-                        </dl>
-                    </li>
+
                     <li class="layui-nav-item">
                         <a class="javascript:;" href="javascript:;">
                             <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>頻道管理</cite>

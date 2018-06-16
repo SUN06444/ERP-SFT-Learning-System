@@ -2,7 +2,7 @@
     <section class="widgets">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <h4 style="font-family: 微軟正黑體">關於我們</h4>
                     <p>我們是國立勤益大學資訊管理系的學生，</p>
                     <p>製作這一項教學平台與大家分享我們所學的知識，</p>
@@ -10,7 +10,7 @@
                     <p>希望您們會喜歡，</p>
                     <p>XXXXX@gmail.com</p>
                 </div>
-                <div class="col-md-3 footer-qlink">
+                <div class="col-md-6 footer-qlink">
                     <h4 style="font-family: 微軟正黑體">快速連結</h4>
                     <nav>
                         <ul>
@@ -23,9 +23,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-md-3 footer-qlink">
-                    <iframe width="600" height="300" src="https://www.youtube.com/embed/FeZ9yXYEN7Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
+
 
             </div>
         </div>
