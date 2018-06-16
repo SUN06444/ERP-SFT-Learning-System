@@ -82,8 +82,14 @@ class UserAuthController extends Controller
         session()->put('user_nickname', $User->nickname);
         session()->put('user_type', $User->type);
 
-        // 重新導向到原先使用者造訪頁面，沒有嘗試造訪頁則重新導向回首頁
-        return redirect()->intended('/');
+        if(session('user_type') == 'A'){
+            return redirect()->intended('/admin');
+
+        }elseif (session('user_type') == 'G'){
+            // 重新導向到原先使用者造訪頁面，沒有嘗試造訪頁則重新導向回首頁
+            return redirect()->intended('/');
+        }
+
     }
 
 
@@ -281,6 +287,71 @@ class UserAuthController extends Controller
         session()->put('user_type', $User->type);
         // 重新導向到原先使用者造訪頁面，沒有嘗試造訪頁則重新導向回首頁
         return redirect()->intended('/');
+    }
+
+    // 檢視會員 collect 的影片
+    public function user_sort_videosPage($sort,$user_id){
+        if($sort == 'collect' ){
+            $Get_Official =  DB::table('videos')
+                ->join('subchannels', 'videos.subchannel_id', '=', 'subchannels.id')
+                ->join('video_collects', 'videos.id', '=', 'video_collects.collect_video_id')
+                ->where('video_collects.user_id', '=', $user_id)
+                ->where('subchannels.channel_id', '=', 1)
+                ->get();
+            $Get_Open =  DB::table('videos')
+                ->join('subchannels', 'videos.subchannel_id', '=', 'subchannels.id')
+                ->join('video_collects', 'videos.id', '=', 'video_collects.collect_video_id')
+                ->where('video_collects.user_id', '=', $user_id)
+                ->where('subchannels.channel_id', '=', 2)
+                ->get();
+
+
+            session()->put('sort', 'collect');
+            $sort_subject = '個人收藏區';
+
+        }elseif ($sort == 'likes') {
+
+
+            $Get_Official = DB::table('videos')
+                ->join('subchannels', 'videos.subchannel_id', '=', 'subchannels.id')
+                ->join('video_likes', 'videos.id', '=', 'video_likes.like_video_id')
+                ->where('video_likes.user_id', '=', $user_id)
+                ->where('subchannels.channel_id', '=', 1)
+                ->get();
+
+
+
+            $Get_Open = DB::table('videos')
+                ->join('subchannels', 'videos.subchannel_id', '=', 'subchannels.id')
+                ->join('video_likes', 'videos.id', '=', 'video_likes.like_video_id')
+                ->where('video_likes.user_id', '=', $user_id)
+                ->where('subchannels.channel_id', '=', 2)
+                ->get();
+
+            session()->put('sort', 'likes');
+            $sort_subject = '個人喜愛區';
+
+        }
+
+
+
+        $Get_OfficialChannel_data_For_Nav = DB::table('subchannels')
+            ->where('channel_id','=','1')
+            ->get();                                                   //navigation需使用到
+
+        $User_data =  DB::table('users')->where('id', '=', $user_id)->get();
+
+        foreach ($User_data as $data){
+            $user_nickname = $data->nickname;
+        }
+
+        $binding = ['title' => '檢視影片' , 'subject' => '『'.$user_nickname.'』'.'的影片'.' - '.$sort_subject,
+            'Get_Official' => $Get_Official,'Get_Open' => $Get_Open,
+            'Get_OfficialChannel_data_For_Nav' => $Get_OfficialChannel_data_For_Nav];
+
+        // 重新導向到影片區
+        return view('auth.video',$binding);
+
     }
 
 }

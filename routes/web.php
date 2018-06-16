@@ -87,6 +87,11 @@ Route::group(['prefix' => 'user'], function(){
         // Facebook 登入重新導向授權資料處理
         Route::get('/facebook-sign-in-callback', 'UserAuthController@facebookSignInCallbackProcess');
     });
+
+    //顯示 會員收藏影片
+    Route::group(['prefix' => 'videos'], function(){
+        Route::get('/{sort}/{user_id}', 'UserAuthController@user_sort_videosPage');
+    });
 });
 
 // 頻道&影片
