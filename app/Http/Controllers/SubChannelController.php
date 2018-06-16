@@ -11,6 +11,7 @@ use App\Video_Collect;
 use App\SubChannel;
 use App\SubChannel_Subscribe;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Input;
 
 class SubChannelController extends Controller
 {
@@ -156,6 +157,25 @@ class SubChannelController extends Controller
     public function addsubchannelProcess()
     {
 
+
+        //判断请求中是否包含name=img的上传文件
+        if (!Input::hasFile('photo')) {
+            exit("请选择上传图片， <a href=''>返回上一页！</a>");
+        }
+        // 判断图片上传中是否出错
+        $file = Input::file('photo');
+        if (!$file->isValid()) {
+            exit("上传图片出错，请重试，<a href=''>返回上一页！</a>");
+        }
+        //$img_path = $file -> getRealPath(); // 获取临时图片绝对路径
+        $entension = $file -> getClientOriginalExtension(); //  上传文件后缀
+        $filename = date('YmdHis').mt_rand(100,999).'.'.$entension;  // 重命名图片
+        $date = date('Y-m-d');
+        $path = $file->move(public_path().'/uploads/'.$date.'/',$filename);  // 重命名保存
+        $photo_path = 'uploads/'.$date.'/'.$filename;
+        //return $photo_path;
+
+
         // 接收輸入資料
         $input = request()->all();
 
@@ -185,10 +205,16 @@ class SubChannelController extends Controller
                 ->withInput();
         }
 
-        $subChannel = SubChannel::create($input);
+        SubChannel::create([
+            'name'=>$input->name,
+            'color'=>$input->color,
+            'photo'=>$photo_path,
+            'description'=>$input->description,
+        ]);
 
         // 重新導向到開放式頻道頁面
         return redirect()->back();
+
     }
 
     // 頻道(分類頁面)
@@ -358,11 +384,14 @@ class SubChannelController extends Controller
             ->update(['views_num' => $views_num + 1]);
 
         //找尋相類似頻道的影片
-        $SimilarVideos = DB::table('videos')->where('subchannel_id', '=', $subchannel_id)->where('id', '!=', $video_id)->get();
+        $SimilarVideos = DB::table('videos')
+            ->where('subchannel_id', '=', $subchannel_id)
+            ->where('id', '!=', $video_id)
+            ->paginate(4);
 
         //計算喜愛人數
         $Video_likes_num = DB::table('video_likes')
-            ->where('video_id','=',$video_id)
+            ->where('like_video_id','=',$video_id)
             ->count();
 
         //更新videos資料庫的喜愛人數
@@ -373,13 +402,13 @@ class SubChannelController extends Controller
         //取得會員like的影片資料(判斷是否已加入喜愛)
         $User_Like_Video = DB::table('video_likes')
             ->where('user_id', '=', session('user_id'))
-            ->where('video_id','=',$video_id)
+            ->where('like_video_id','=',$video_id)
             ->get();
 
         //取得會員collect的影片資料(判斷是否已加入收藏)
         $User_Collect_Video = DB::table('video_collects')
             ->where('user_id', '=', session('user_id'))
-            ->where('video_id','=',$video_id)
+            ->where('collect_video_id','=',$video_id)
             ->get();
 
 
@@ -404,22 +433,22 @@ class SubChannelController extends Controller
     public function video_eventProcess($video_id,$event){
 
         //查詢使用者like的影片數量(一部影片只能有一筆喜愛資料)
-        $video_like_limit = DB::table('video_likes')->where('user_id', '=', session('user_id'))->where('video_id', '=', $video_id)->count();
+        $video_like_limit = DB::table('video_likes')->where('user_id', '=', session('user_id'))->where('like_video_id', '=', $video_id)->count();
         //查詢使用者collect的影片數量(一部影片只能有一筆收藏資料)
-        $video_collect_limit = DB::table('video_collects')->where('user_id', '=', session('user_id'))->where('video_id', '=', $video_id)->count();
+        $video_collect_limit = DB::table('video_collects')->where('user_id', '=', session('user_id'))->where('collect_video_id', '=', $video_id)->count();
 
         if($event == 'like' || $event == 'collect' ){
 
             //當使用者點擊like事件時，或者collect事件時
             if($event == 'like' ){
                 if ($video_like_limit == 0){ //先判斷影片是否尚未加入like
-                    Video_Like::create(array('user_id' => session('user_id'), 'video_id' => $video_id));
+                    Video_Like::create(array('user_id' => session('user_id'), 'like_video_id' => $video_id));
 
                 }
 
             }elseif ($event == 'collect') {
                 if ($video_collect_limit == 0) { //先判斷影片是否尚未加入collect
-                    Video_Collect::create(array('user_id' => session('user_id'), 'video_id' => $video_id));
+                    Video_Collect::create(array('user_id' => session('user_id'), 'collect_video_id' => $video_id));
                 }
             }
 
@@ -429,14 +458,14 @@ class SubChannelController extends Controller
                 if ($video_like_limit == 1){
                     DB::table('video_likes')
                         ->where('user_id', '=', session('user_id'))
-                        ->where('video_id', '=', $video_id)
+                        ->where('like_video_id', '=', $video_id)
                         ->delete();
                 }
             }elseif ($event == 'discollect') {
                 if ($video_collect_limit == 1){
                     DB::table('video_collects')
                         ->where('user_id', '=', session('user_id'))
-                        ->where('video_id', '=', $video_id)
+                        ->where('collect_video_id', '=', $video_id)
                         ->delete();
                 }
             }
